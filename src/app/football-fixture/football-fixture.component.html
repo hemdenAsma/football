@@ -1,0 +1,16 @@
+<table class="table table-borderless">
+  <tbody *ngFor="let element of fixturesList">
+  <tr >
+    <td><img src="{{getTeam(element,'home').logo}}" class="team-logo" alt="logo"></td>
+    <td>{{getTeam(element, 'home').name}}</td>
+    <td>{{getGoal(element, 'home')}}</td>
+    <td> - </td>
+    <td>{{getGoal(element, 'away')}}</td>
+    <td>{{getTeam(element,'away').name}}</td>
+    <td><img src="{{getTeam(element,'away').logo}}" class="team-logo" alt="logo"></td>
+  </tr>
+  </tbody>
+
+</table>
+
+<button class="btn btn-primary" type="button" (click)="backToLeaguePage()">Back</button>

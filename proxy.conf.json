@@ -1,0 +1,14 @@
+{
+  "/standings": {
+    "target": "https://v3.football.api-sports.io",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/fixtures": {
+    "target": "https://v3.football.api-sports.io",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

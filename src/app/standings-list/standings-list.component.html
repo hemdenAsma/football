@@ -1,0 +1,32 @@
+<football-country-navbar (getSelectedCountry)="getCountry($event)"></football-country-navbar>
+<div class="pt-3">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col">Name</th>
+      <th scope="col">Games</th>
+      <th scope="col">W</th>
+      <th scope="col">L</th>
+      <th scope="col">D</th>
+      <th scope="col">Goal Difference</th>
+      <th scope="col">Points</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let standing of standingsList; let index = index">
+    <tr (click)="navigateToTeamPage(standing.team)">
+      <td>{{index + 1}}</td>
+      <td><img src="{{standing.team.logo}}" class="team-logo" alt="logo"></td>
+      <td>{{standing.team.name}}</td>
+      <td>{{standing.home.played}}</td>
+      <td>{{standing.home.win}}</td>
+      <td>{{standing.home.draw}}</td>
+      <td>{{standing.home.lose}}</td>
+      <td>{{standing.goalsDiff}}</td>
+      <td>{{standing.points}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
