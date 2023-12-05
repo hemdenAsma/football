@@ -1,13 +1,17 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { FixtureService } from './fixture.service';
+import {FixtureService} from './fixture.service';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('FixtureService', () => {
   let service: FixtureService;
 
+
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(FixtureService);
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
+      service = TestBed.inject(FixtureService);
   });
 
   it('should be created', () => {

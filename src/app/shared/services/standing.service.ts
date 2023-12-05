@@ -9,7 +9,7 @@ export class StandingService {
 
   constructor(private http: HttpClient) { }
 
-  getStandingsByLeagueAndSeason(leagueId: number, season: number): Observable<any>{
+  getStandingsByLeagueAndSeason(leagueId: number, season: number): Observable<object>{
     let params = new HttpParams();
     params = params.append('league', leagueId);
     params = params.append('season', season);

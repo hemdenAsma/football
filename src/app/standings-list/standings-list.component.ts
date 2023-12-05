@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StandingService} from "../shared/services/standing.service";
 import {Standing} from "../shared/interfaces/standing";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {CountryNavbarComponent} from "../country-navbar/country-navbar.component";
 import {Router} from "@angular/router";
 import {Team} from "../shared/interfaces/team";
@@ -11,7 +11,8 @@ import {Team} from "../shared/interfaces/team";
   standalone: true,
   imports: [
     NgForOf,
-    CountryNavbarComponent
+    CountryNavbarComponent,
+    NgIf
   ],
   templateUrl: './standings-list.component.html',
   styleUrl: './standings-list.component.scss'

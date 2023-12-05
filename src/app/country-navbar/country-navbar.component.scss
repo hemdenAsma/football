@@ -1,8 +1,7 @@
 .football-nav {
   border-radius: 10px;
   opacity: 0.8;
-
-  ul#nav li a:hover, ul#nav li.active a {
-    // here styling
-  }
+}
+.active{
+  background-color: lightskyblue;
 }

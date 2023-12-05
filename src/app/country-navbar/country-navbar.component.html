@@ -1,7 +1,7 @@
 
     <ul class="nav justify-content-center bg-light football-nav">
-      <li class="nav-item" *ngFor="let country of countryList"  >
-        <a class="nav-link" (click)="selectCountry(country)" id="{{country}}Select">{{country}}</a>
+      <li class="nav-item" *ngFor="let country of countryList" [class.active]="countrySelected === country">
+        <button class="nav-link" (click)="selectCountry(country)" id="{{country}}Select">{{country}}</button>
       </li>
 
     </ul>

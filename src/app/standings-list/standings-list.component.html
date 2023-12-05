@@ -1,4 +1,5 @@
-<football-country-navbar (getSelectedCountry)="getCountry($event)"></football-country-navbar>
+<football-country-navbar (getSelectedCountry)="getCountry($event)" ></football-country-navbar>
+
 <div class="pt-3">
   <table class="table table-bordered">
     <thead>
@@ -30,3 +31,5 @@
   </table>
 </div>
 
+
+<h3 *ngIf="!standingsList.length" class="text-center" style="background-color: red">Please choose a country </h3>

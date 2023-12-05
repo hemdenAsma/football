@@ -1,12 +1,13 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {NgForOf} from "@angular/common";
+import {NgClass, NgForOf} from "@angular/common";
 import {Country} from "../shared/constant/country";
 
 @Component({
   selector: 'football-country-navbar',
   standalone: true,
   imports: [
-    NgForOf
+    NgForOf,
+    NgClass
   ],
   templateUrl: './country-navbar.component.html',
   styleUrl: './country-navbar.component.scss'
@@ -14,13 +15,14 @@ import {Country} from "../shared/constant/country";
 export class CountryNavbarComponent implements OnInit{
 
   public countryList: Array<string> = [];
+  public countrySelected: string;
 
   @Output() public getSelectedCountry: EventEmitter<number> = new EventEmitter<number>();
   ngOnInit(): void {
     this.countryList= Country;
-    //this.selectCountry(this.countryList[0]);
   }
   selectCountry(selectedCountryName: string): void{
+    this.countrySelected = selectedCountryName;
     this.getSelectedCountry.emit(this.getLeagueId(selectedCountryName));
   }
   private getLeagueId(countryName: string): number{

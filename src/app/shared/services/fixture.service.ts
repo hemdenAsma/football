@@ -9,7 +9,7 @@ export class FixtureService {
 
   constructor(private http: HttpClient) { }
 
-  getFixtures( season: number, teamId: number, last: number): Observable<any>{
+  getFixtures( season: number, teamId: number, last: number): Observable<object>{
     let params = new HttpParams();
     params = params.append('season', season);
     params = params.append('team', teamId);
