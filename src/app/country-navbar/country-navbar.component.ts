@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgClass, NgForOf} from "@angular/common";
 import {Country} from "../shared/constant/country";
 
@@ -17,41 +17,18 @@ export class CountryNavbarComponent implements OnInit{
   public countryList: Array<string> = [];
   public countrySelected: string;
 
-  @Output() public getSelectedCountry: EventEmitter<number> = new EventEmitter<number>();
+  @Input() defaultCountry : string;
+  @Output() public getSelectedCountry: EventEmitter<string> = new EventEmitter<string>();
   ngOnInit(): void {
     this.countryList= Country;
+    if (this.defaultCountry){
+      this.countrySelected = this.defaultCountry;
+    }
   }
   selectCountry(selectedCountryName: string): void{
     this.countrySelected = selectedCountryName;
-    this.getSelectedCountry.emit(this.getLeagueId(selectedCountryName));
+    this.getSelectedCountry.emit(selectedCountryName);
   }
-  private getLeagueId(countryName: string): number{
-    switch(countryName) {
-      case 'England': {
-        return 39;
-        break;
-      }
-      case 'Spain': {
-        return 140;
-        break;
-      }
-      case 'France': {
-        return 61;
-        break;
-      }
-      case 'Germany': {
-        return 78;
-        break;
-      }
-      case 'Italy': {
-        return 135;
-        break
-      }
-      default: {
-        return 0;
-        break;
-      }
-    }
-  }
+
 
 }

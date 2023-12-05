@@ -20,32 +20,59 @@ import {Team} from "../shared/interfaces/team";
 export class StandingsListComponent implements OnInit {
 
   public standingsList: Standing[] = [];
-  private leagueId: number;
+  public selectedCountry: string;
 
   constructor(private standingService: StandingService, private router: Router) {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem('leagueId')){
-      this.getCountry(+localStorage.getItem('leagueId'));
+    if (localStorage.getItem('selectedCountry')){
+      this.getCountry(localStorage.getItem('selectedCountry'));
       localStorage.clear();
     }
   }
 
-  public getCountry(leagueId: number): void {
-    this.leagueId = leagueId;
-    this.getStandingsList(leagueId);
+  public getCountry(country: string): void {
+    this.selectedCountry = country;
+    this.getStandingsList(country);
   }
 
-  getStandingsList(leagueId: number): void {
+  getStandingsList(countryName: string): void {
     const currentYear = new Date().getFullYear();
+    const leagueId = this.getLeagueId(countryName);
     this.standingService.getStandingsByLeagueAndSeason(leagueId, currentYear).subscribe(result => {
       this.standingsList = result['response'][0]['league']['standings'][0];
     });
   }
-
-  navigateToTeamPage(selectedTeam: Team): void {
-    localStorage.setItem('leagueId', this.leagueId.toString());
+  private getLeagueId(countryName: string): number{
+    switch(countryName) {
+      case 'England': {
+        return 39;
+        break;
+      }
+      case 'Spain': {
+        return 140;
+        break;
+      }
+      case 'France': {
+        return 61;
+        break;
+      }
+      case 'Germany': {
+        return 78;
+        break;
+      }
+      case 'Italy': {
+        return 135;
+        break
+      }
+      default: {
+        return 0;
+        break;
+      }
+    }
+  }  navigateToTeamPage(selectedTeam: Team): void {
+    localStorage.setItem('selectedCountry', this.selectedCountry);
     this.router.navigate(['/team/' + selectedTeam.id]);
   }
 
