@@ -13,6 +13,6 @@ export class StandingService {
     let params = new HttpParams();
     params = params.append('league', leagueId);
     params = params.append('season', season);
-    return this.http.get('/standings', {params})
+    return this.http.get<object>('https://v3.football.api-sports.io/standings', {params, responseType: "json"});
   }
 }

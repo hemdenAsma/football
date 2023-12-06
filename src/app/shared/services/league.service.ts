@@ -15,6 +15,6 @@ export class LeagueService {
     params = params.append('name', name);
     params = params.append('country', country);
     params = params.append('current', current);
-    return this.http.get('/leagues', {params});
+    return this.http.get<object>('https://v3.football.api-sports.io/leagues', {params, responseType: "json"});
   }
 }
