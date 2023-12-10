@@ -5,6 +5,7 @@ import {Location, NgForOf} from "@angular/common";
 import {Team} from "../shared/interfaces/team";
 import {Goals} from "../shared/interfaces/goals";
 import {Fixture} from "../shared/interfaces/fixture";
+import {MatchSummary} from "../shared/interfaces/match-summary";
 
 @Component({
   selector: 'football-football-fixture',
@@ -16,7 +17,7 @@ import {Fixture} from "../shared/interfaces/fixture";
   styleUrl: './football-fixture.component.scss'
 })
 export class FootballFixtureComponent implements OnInit {
-  public fixturesList: Fixture[
+  public fixturesList: MatchSummary[
     ];
   private teamId: number;
 
@@ -39,10 +40,10 @@ export class FootballFixtureComponent implements OnInit {
       this.fixturesList = result['response'];
     });
   }
-  getTeam(element: object, type: string): Team{
+  getTeam(element: MatchSummary, type: string): Team{
     return element['teams'][type];
   }
-  getGoal(element: object, type: string): Goals{
+  getGoal(element: MatchSummary, type: string): Goals{
     return element['goals'][type];
   }
   backToLeaguePage(): void {
